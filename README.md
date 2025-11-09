@@ -4,6 +4,10 @@ A fictional **AI-powered Notes REST API** created to demonstrate professional **
 
 This project is part of a personal portfolio built by [Santiago Bolivar](https://santiagobolivar.dev), Senior Technical Writer at Uber, to showcase expertise in API documentation workflows and developer education.
 
+## Live project
+
+View live project at https://ai-notes-api-docs.vercel.app/home.
+
 ## Overview
 
 The **AI Notes API** simulates a RESTful service for creating and managing notes, enhanced by AI features such as text summarization, keyword extraction, and automatic title generation.
