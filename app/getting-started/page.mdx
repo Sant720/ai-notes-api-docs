@@ -1,0 +1,85 @@
+---
+title: Getting started
+description: Learn how to use the AI Notes API mock server, authenticate requests, and make your first API call.
+---
+
+# Getting started
+
+This guide will help you get up and running with the **AI Notes API** mock environment.  
+Even though this is a simulated API, the structure, authentication, and examples model real-world API design principles.
+
+
+## Before you begin
+
+You’ll need:
+
+- A REST client such as **Postman**, **Insomnia**, or **curl**
+- Access to the **mock server URL** (placeholder below)
+- Basic familiarity with JSON and HTTP request methods
+
+
+## Authentication
+
+The AI Notes API uses a simple **API key** scheme to simulate secure access.
+
+| Header | Type | Example |
+| --- | --- | --- |
+| `Authorization` | `Bearer <API_KEY>` | `Bearer demo-123456789` |
+
+Include your key in the `Authorization` header on every request.
+
+```bash
+curl -X GET https://api.mockserver.io/v1/notes   -H "Authorization: Bearer demo-123456789"
+```
+
+> This is a simulated key for documentation purposes only. In a real production API, keys would be issued and managed via a developer portal.
+
+
+## Base URL
+
+All API requests use the same base URL (mocked via Postman):
+
+```
+https://api.mockserver.io/v1
+```
+
+Example endpoints:
+
+| Action | Endpoint |
+| --- | --- |
+| List all notes | `GET /notes` |
+| Get a note | `GET /notes/{id}` |
+| Create a note | `POST /notes` |
+| Summarize a note | `POST /notes/{id}/summarize` |
+
+## Make your first request
+
+Retrieve a list of notes:
+
+```bash
+curl -X GET https://api.mockserver.io/v1/notes   -H "Authorization: Bearer demo-123456789"   -H "Content-Type: application/json"
+```
+
+Sample response:
+
+```json
+{
+  "notes": [
+    {
+      "id": "note_123",
+      "title": "Meeting notes: AI design review",
+      "content": "Discussed model fine-tuning and summarization endpoints.",
+      "created_at": "2025-10-01T12:00:00Z"
+    }
+  ],
+  "count": 1
+}
+```
+
+## What’s next
+
+- Visit **Endpoints** for CRUD and AI actions.
+- Read **Errors** for common responses and troubleshooting.
+- Check the **OpenAPI spec** for schemas (`/openapi.yaml`).
+
+> 🔗 Tip: When available, use the Postman “Run in Postman” button from this page to import the collection and try requests quickly.
