@@ -10,8 +10,8 @@ export default withNextra({
     return [
       {
         source: "/",
-        destination: "/tools",
-        permanent: false,
+        destination: "/home",
+        permanent: true,
       },
     ];
   },
