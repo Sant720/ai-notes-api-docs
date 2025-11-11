@@ -1,0 +1,114 @@
+---
+title: Retrieve all notes
+description: Retrieve a list of all notes for the authenticated user.
+---
+
+# Retrieve all notes
+
+GET https://{url}/notes 
+
+Retrieve all notes belonging to the authenticated user.
+
+## Overview
+Returns a paginated list of notes owned by the authenticated account.  
+Requires a valid Bearer token.
+
+**Base URL**
+```
+https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io
+```
+
+
+## Authentication
+This endpoint requires an `Authorization` header with a valid Bearer token:
+
+```
+Authorization: Bearer demo-valid
+Accept: application/json
+```
+
+
+## Example requests
+
+### 200 OK
+```bash
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes' --header 'Authorization: Bearer demo-valid' --header 'Accept: application/json'
+```
+
+### 401 Unauthorized
+```bash
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes' --header 'Accept: application/json'
+```
+
+### 403 Forbidden
+```bash
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes' --header 'Authorization: Bearer demo-no-access' --header 'Accept: application/json'
+```
+
+### 404 Not Found
+```bash
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes' --header 'Authorization: Bearer demo-empty' --header 'Accept: application/json'
+```
+
+### 429 Too Many Requests
+```bash
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes?simulate=rate-limit' --header 'Authorization: Bearer demo-valid' --header 'Accept: application/json'
+```
+
+### 500 Internal Server Error
+```bash
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes?simulate=internal-error' --header 'Authorization: Bearer demo-valid' --header 'Accept: application/json'
+```
+
+### 503 Service Unavailable
+```bash
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes?simulate=unavailable' --header 'Authorization: Bearer demo-valid' --header 'Accept: application/json'
+```
+
+
+## Response example — 200 OK
+```json
+{
+  "status": "success",
+  "user_id": "2ad3abb7-77a4-4998-9363-f85d9c66f3be",
+  "username": "Nicole86",
+  "message": "Notes retrieved successfully",
+  "count": 3,
+  "notes": [
+    {
+      "id": "55e793fe-2a52-4821-86d8-24f94689f501",
+      "title": "cultivate efficient functionalities",
+      "content": "Try to back up the SMTP transmitter, maybe it will parse the optical bus!",
+      "created_at": "Thu Jun 19 2025 20:43:37 GMT+0000 (Coordinated Universal Time)",
+      "updated_at": "Mon Nov 10 2025 08:41:07 GMT+0000 (Coordinated Universal Time)"
+    }
+  ]
+}
+```
+
+
+## Possible responses
+
+| Status | Meaning | Description |
+|--| --|--|
+| 200 | OK | Notes retrieved successfully |
+| 401 | Unauthorized | Missing or invalid token |
+| 403 | Forbidden | Token valid but lacks permission |
+| 404 | Not Found | No notes for this user |
+| 429 | Too Many Requests | Rate-limit exceeded |
+| 500 | Internal Server Error | Unexpected backend issue |
+| 503 | Service Unavailable | Temporary maintenance |
+
+
+## Headers
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| `Authorization` | string | ✅ | Bearer token for authentication |
+| `Accept` | string | ✅ | Expected response type (`application/json`) |
+
+
+## Notes
+- `GET /notes` is scoped to the authenticated user — no `user_id` parameter is required.  
+- Rate-limit headers (`X-RateLimit-*`, `Retry-After`) are returned when limits are hit.  
+- You can use the Postman mock server URL directly to test the responses.
