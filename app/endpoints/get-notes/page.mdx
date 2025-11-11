@@ -36,41 +36,71 @@ Accept: application/json
 
 ## Example requests
 
-### 200 OK
-```bash
-curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes' --header 'Authorization: Bearer demo-valid' --header 'Accept: application/json'
+200
+
+```
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes' \
+--header 'Authorization: Bearer demo-valid' \
+--header 'Accept: application/json'
 ```
 
-### 401 Unauthorized
-```bash
-curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes' --header 'Accept: application/json'
+401
+
+```
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes'
 ```
 
-### 403 Forbidden
-```bash
-curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes' --header 'Authorization: Bearer demo-no-access' --header 'Accept: application/json'
+```
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes' \
+--header 'Accept: application/json'
 ```
 
-### 404 Not Found
-```bash
-curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes' --header 'Authorization: Bearer demo-empty' --header 'Accept: application/json'
+```
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes' \
+--header 'Authorization: demo-invalid' \
+--header 'Accept: application/json'
 ```
 
-### 429 Too Many Requests
-```bash
-curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes?simulate=rate-limit' --header 'Authorization: Bearer demo-valid' --header 'Accept: application/json'
+403
+
+```
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes' \
+--header 'Authorization: Bearer demo-no-access' \
+--header 'Accept: application/json'
 ```
 
-### 500 Internal Server Error
-```bash
-curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes?simulate=internal-error' --header 'Authorization: Bearer demo-valid' --header 'Accept: application/json'
+
+404
+
+```
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes' \
+--header 'Authorization: Bearer demo-empty' \
+--header 'Accept: application/json'
 ```
 
-### 503 Service Unavailable
-```bash
-curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes?simulate=unavailable' --header 'Authorization: Bearer demo-valid' --header 'Accept: application/json'
+429
+
+```
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes?simulate=rate-limit' \
+--header 'Authorization: Bearer demo-valid' \
+--header 'Accept: application/json'
 ```
 
+500
+
+```
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes?simulate=internal-error' \
+--header 'Authorization: Bearer demo-valid' \
+--header 'Accept: application/json'
+```
+
+503
+
+```
+curl 'https://389d0769-9386-445d-bca6-1a7753678ff2.mock.pstmn.io/notes?simulate=unavailable' \
+--header 'Authorization: Bearer demo-valid' \
+--header 'Accept: application/json'
+```
 
 ## Response example — 200 OK
 ```json
